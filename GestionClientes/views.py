@@ -30,7 +30,7 @@ def create_cliente(request):
         })
     else:
         data = CreateCliente(request.POST)
-        print(data)
+        # print(data)
         if data.is_valid():
             # Agrega una validación personalizada para la identificación
             identificacion = data.cleaned_data['identificacion']
