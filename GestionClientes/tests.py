@@ -2,7 +2,6 @@ from user.models import User
 from django.test import TestCase, Client
 from django.urls import reverse
 from GestionClientes.models import Cliente, Sucursale
-from django.conf import settings
 
 
 class ClienteViewTest(TestCase):
@@ -39,7 +38,6 @@ class ClienteViewTest(TestCase):
         self.assertContains(response, self.cliente.telefono)
 
     def test_create_cliente_view(self):
-        print(settings.DATABASES)
         # Se crea un diccionario con los datos para crear un nuevo cliente
         data = {
             'identificacion': '1234567891',

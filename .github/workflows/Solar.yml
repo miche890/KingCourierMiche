@@ -19,12 +19,15 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
 
-      - name: Install tox and any other packages
-        run: pip install tox
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
-      - name: Run tox
-        run: tox -e py
+      - name: Run tests
+        run: coverage run manage.py test
 
+      - name: Generar reporte de la cobertura
+        run: coverage xml -o coverage.xml
+      
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
