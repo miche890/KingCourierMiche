@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+import sys
+
 
 load_dotenv()
 
@@ -41,10 +43,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'login',
+    'user',
     'GestionClientes',
     'GestionMensajeros',
-    'user',
-    'login',
 ]
 
 MIDDLEWARE = [
@@ -89,6 +91,10 @@ DATABASES = {
         'PASSWORD': os.environ.get('POSTGRESS_PASSWORD'),
         'HOST': os.environ.get('POSTGRESS_HOST'),
         'DATABASE_PORT': os.environ.get('POSTGRESS_PORT'),
+    },
+    'test': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': ':memory:',
     }
 }
 
@@ -149,8 +155,11 @@ EMAIL_PORT = 587
 # EMAIL_HOST_PASSWORD = ""
 
 # sustituir modelo de user
-
 AUTH_USER_MODEL = 'user.User'
 
-#URL login
+# URL del login
 LOGIN_URL = '/'
+
+# configuracion de la DB temporal para los test
+if 'test' in sys.argv:
+    DATABASES['default'] = DATABASES['test']
