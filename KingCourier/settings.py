@@ -85,17 +85,19 @@ WSGI_APPLICATION = 'KingCourier.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRESS_DATABASE'),
-        'USER': os.environ.get('POSTGRESS_USER'),
-        'PASSWORD': os.environ.get('POSTGRESS_PASSWORD'),
-        'HOST': os.environ.get('POSTGRESS_HOST'),
-        'DATABASE_PORT': os.environ.get('POSTGRESS_PORT'),
-    },
-    'test': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': ':memory:',
-    }
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': os.environ.get('POSTGRESS_DATABASE'),
+        # 'USER': os.environ.get('POSTGRESS_USER'),
+        # 'PASSWORD': os.environ.get('POSTGRESS_PASSWORD'),
+        # 'HOST': os.environ.get('POSTGRESS_HOST'),
+        # 'DATABASE_PORT': os.environ.get('POSTGRESS_PORT'),
+    },
+    # 'test': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': ':memory:',
+    # }
 }
 
 
@@ -161,5 +163,5 @@ AUTH_USER_MODEL = 'user.User'
 LOGIN_URL = '/'
 
 # configuracion de la DB temporal para los test
-if 'test' in sys.argv:
-    DATABASES['default'] = DATABASES['test']
+# if 'test' in sys.argv:
+#     DATABASES['default'] = DATABASES['test']

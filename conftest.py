@@ -1,11 +1,11 @@
 print("Executing conftest.py")
-import pytest
-from django.conf import settings
+# import pytest
+# from django.conf import settings
 
-@pytest.fixture(scope='session')
-def django_db_setup():
-    settings.DATABASES['default'] = {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'test',
-        'ATOMIC_REQUESTS': True,
-    }
+# @pytest.fixture(scope='session')
+# def django_db_setup():
+#     settings.DATABASES['default'] = {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': 'test',
+#         'ATOMIC_REQUESTS': True,
+#     }
